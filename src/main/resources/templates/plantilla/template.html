@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+	<!-- BARRA DE NAVEGACIÓN -->
+	
+	<header th:fragment="header">
+	
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<!-- ENLACES DEL MENU -->
+
+			</div>
+		</nav>
+
+		<!-- MENSAJES -->
+
+		<div class="alert alert-success alert-dismissable"
+			th:if="${success!=null}">
+			<label th:text="${success}"></label>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+
+		<div class="alert alert-danger alert-dismissable"
+			th:if="${error!=null}">
+			<label th:text="${error}"></label>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+		
+		<div class="alert alert-warning alert-dismissable"
+			th:if="${warning!=null}">
+			<label th:text="${warning}"></label>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+		
+		<div class="alert alert-info alert-dismissable" th:if="${info!=null}">
+			<label th:text="${info}"></label>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+	</header>
+
+
+	<!-- CONTENIDO -->
+
+
+
+	<!-- PIE DE PAGINA -->
+
+	<footer th:fragment="footer"
+		class="bg-dark text-white text-center fixed-bottom">
+
+
+	</footer>
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script type="text/javascript"
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
