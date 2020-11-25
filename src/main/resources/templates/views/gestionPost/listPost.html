@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/plantilla/template :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+
+	<header th:insert="/plantilla/template :: header"></header>
+	<div class="container">
+		<h2 th:text="${administrar}"></h2>
+	</div>
+	<div class="container">
+		<a class="btn btn-primary btn-sm" th:href="@{/post/createPost}"
+			title="Crear Nuevo Post"><i class="fa fa-plus-square"
+			aria-hidden="true"></i> Crear Nuevo Post</a> <a
+			class="btn btn-primary btn-sm" th:href="@{#}" title="Exportar a CVS"><i
+			class="fa fa-file-excel-o" aria-hidden="true"></i> Exportar a CVS</a>
+	</div>
+	<br>
+	<br>
+	<div class="container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+				<!--  
+					<th scope="col">ID</th>
+					-->
+					<th scope="col">TITULO</th>
+					<th scope="col">IMAGEN</th>
+					<th scope="col">CONTENIDO</th>
+					<th scope="col">CATEGORIA</th>
+					<th scope="col">FECHA PUBLICACIÓN</th>
+					<th scope="col">HABILITADA</th>
+					<th scope="col">VER POST</th>
+					<th scope="col">EDITAR</th>
+					<th scope="col">ELIMINAR</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="lp:${lista}">
+				<!--
+					<th scope="row" th:text="${lp.id}"></th>
+					-->
+					<td th:text="${lp.title}"></td>
+					<td th:text="${lp.image}"></td>
+					<td th:text="${lp.shortContent}"></td>
+					<td th:text="${lp.category}"></td>
+					<td th:text="${lp.date}"></td>
+					<td th:if="${lp.enabled==true}"><span class="badge badge-dark">ACTIVA</span></td>
+					<td th:if="${lp.enabled==false}"><span class="badge badge-info">INACTIVA</span></td>
+					<td><a class="btn btn-primary btn-sm"
+						th:href="@{/post/viewPost/{id} (id=${lp.id})}" title="Editar Post">Ver
+							Post</a></td>
+					<td><a class="btn btn-success btn-sm"
+						th:href="@{/post/edit/{id} (id=${lp.id})}" title="Editar Post">Editar</a></td>
+					<td><a class="btn btn-danger btn-sm"
+						th:href="@{/post/delete/{id} (id=${lp.id})}" title="Eliminar Post"
+						onclick="return confirm('¿Estas seguro de eliminar la publicación?')"><i
+							class="fa fa-trash-o fa-lg"></i> Eliminar</a></td>
+
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+	<footer th:insert="/plantilla/template :: footer"></footer>
+
+
+
+</body>
+</html>

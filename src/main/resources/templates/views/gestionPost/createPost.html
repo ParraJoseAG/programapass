@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="/plantilla/template :: head">
+<meta charset="UTF-8">
+<title th:text="${hola}"></title>
+</head>
+<body>
+
+	<header th:replace="/plantilla/template :: header"></header>
+
+	<div class="container">
+
+		<div class="card bg-light">
+			<div class="card text-center">
+				<div class="card-header bg-primary text-white" th:text=${titulo}></div>
+
+				<div class="card-body">
+					<form th:action=@{/post/save} th:object=${post} method="post">
+						<div class="form-group row">
+							<input type="hidden" th:field="*{id}" /> <label class="col-md-2"
+								for="title">TITULO:</label> <input type="text"
+								th:field="*{title}"
+								class="form-control form-control-sm col-md-6"
+								placeholder="Titulo del Post" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('title')}" th:errors=*{title}>
+							</small>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-md-2" for="shortContent">CONTENIDO:</label>
+							<textarea class="col-md-6" th:field="*{shortContent}"></textarea>
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('shortContent')}"
+								th:errors=*{shortContent}> </small>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-md-2" for="image">IMAGEN:</label> <input
+								type="file" th:field="*{image}"
+								class="form-control form-control-sm col-md-3" />
+						</div>
+
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="content"> PUBLICACIÓN:</label>
+							<textarea th:field="*{content}"></textarea>
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('content')}" th:errors=*{content}>
+							</small>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-2" for="category">CATEGORIA:</label> <input
+								type="text" th:field="*{category}"
+								class="form-control form-control-sm col-md-6"
+								placeholder="Categoria del Post" />
+						</div>
+
+						<div class="form-group row">
+							<label class="col-md-2" for="date">FECHA DE PUBLICACIÓN:</label>
+							<input class="form-control form-control-sm col-md-6" type="date"
+								th:field="*{date}" /><small class="form-text text-danger"
+								th:if="${#fields.hasErrors('date')}" th:errors=*{date}>
+							</small>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-2" for="enabled">HABILITAR:</label>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" th:field="*{enabled}"
+									type="radio" name="enabled" id="enabled1" value=1> <label
+									class="form-check-label" for="enabled1"> SI </label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" th:field="*{enabled}"
+									type="radio" name="enabled" id="enabled2" value=0> <label
+									class="form-check-label" for="enabled2"> NO</label>
+							</div>
+						</div>
+
+						<div th:if="${accion =='Guardar'}" class="card-footer">
+							<input type="submit" class="btn btn-primary btn-sn"
+								th:href=@{/post/save} value="Guardar" /> <input type="reset"
+								class="btn btn-primary btn-sn" value="Restaurar" /> <a
+								type="cancel" class="btn btn-primary btm-sn" th:href=@{/post/}>Cancelar</a>
+						</div>
+						<div th:unless="${accion =='Guardar'}" class="card-footer">
+							<input type="submit" class="btn btn-primary btn-sn"
+								th:href=@{/post/save} value="Guardar" /> <a type="cancel"
+								class="btn btn-primary btm-sn" th:href=@{/post/}>Cancelar</a>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="/plantilla/template :: footer"></footer>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#content').summernote({
+				height : 200,
+				minHeight : null,
+				maxHeight : null,
+			});
+
+		});
+	</script>
+</body>
+</html>

@@ -1,54 +1,16 @@
-package com.programapass.entity;
+package com.programapass.models;
 
-import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
+public class Post {
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-@Entity
-@Table(name = "posts")
-public class Post implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
 	private Long id;
-	@Column
-	@NotBlank
 	private String title;
-	@Column
-	@NotBlank
 	private String shortContent;
-	@Column
-	@NotBlank
 	private String content;
-	@Column
 	private String image;
-	@Column
 	private String category;
-	@Column
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
-	@Future
 	private Date date;
-	@Column
 	private boolean enabled;
 
 	public Long getId() {

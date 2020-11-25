@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/plantilla/template :: head">
+<meta charset="UTF-8">
+<title></title>
+
+</head>
+<body>
+
+	<header th:insert="/plantilla/template :: header"></header>
+	<a type="cancel" class="btn btn-success btm-sn" th:href=@{/post/}><< Regresar</a>
+	<div class="container">
+		<div th:utext="${post.content}"></div>
+	</div>
+	<header th:insert="/plantilla/template :: footer"></header>
+</body>
+</html>
+

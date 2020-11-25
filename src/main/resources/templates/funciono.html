@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/plantilla/template :: head">
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+
+</head>
+<body>
+
+	<header th:replace="/plantilla/template :: header"></header>
+	<h1>Ejemplo textarea</h1>
+	<i class="fa fa-trash-o fa-lg"></i>
+	<div class="container">
+
+		<form th:action="@{/post/save}" method="POST">
+
+			<div class="form-group">
+				<label for="contenido">Contenido</label>
+				<textarea id="summernote"></textarea>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+	</div>
+	<footer th:replace="/plantilla/template :: footer"></footer>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#summernote').summernote(
+					//{
+				
+				//toolbar: [
+				   //  ['toolbar', ['bold', 'italic', 'underline','fontsize','color','ul', 'ol', 'paragraph']]
+				  //]	
+			//}
+					);
+		});
+	</script>
+
+</body>
+</html>
